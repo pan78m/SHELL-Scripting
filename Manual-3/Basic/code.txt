@@ -1,0 +1,175 @@
+#Shell Script 
+# Let is the Built-in Function 
+let a=4+5
+echo $a #9
+let "a=4+5"
+echo $a
+let "a=$1+3"
+------
+expr is similar as let just do not save
+the value in a variable just calculate
+and print the result in expr
+--So many example done here!
+----------
+Floating-Point Arithmetic
+
+ Example-1
+ echo "scale=5; 123.456789/345.345345" | bc
+ User input technic->
+ 
+ echo -n "Enter Celsius temperature: "
+read cel
+
+# Check if the input is a valid number
+if [[ $cel =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+    # Perform the Celsius to Fahrenheit conversion
+    fah=$(echo "scale=2; 9/5 * $cel + 32" | bc)
+    echo "Fahrenheit temperature: $fah"
+else
+    echo "Error: Please enter a valid numeric value for Celsius temperature."
+fi
+----
+User Number Input->
+--
+echo -n "Enter a number: "
+read number
+
+if [ $number -gt 10 ]; then
+    echo "The number is greater than 10."
+else
+    echo "The number is not greater than 10."
+fi
+--
+
+Lenght of the variable->
+a='Hello World'
+echo ${#a}
+
+--
+Lab Task->
+echo -n "Enter the radius of the circle: "
+read radius
+
+# Calculate area and circumference
+area=$(echo "scale=2; 3.14 * $radius * $radius" | bc)
+circumference=$(echo "scale=2; 2 * 3.14 * $radius" | bc)
+
+echo "Area of the circle: $area"
+echo "Circumference of the circle: $circumference"
+--
+task->2
+echo -n "Enter the coefficient a: "
+read a
+
+echo -n "Enter the coefficient b: "
+read b
+
+echo -n "Enter the coefficient c: "
+read c
+
+# Calculate discriminant
+discriminant=$(echo "$b^2 - 4 * $a * $c" | bc)
+
+# Check if discriminant is positive, negative, or zero
+if [ $discriminant -gt 0 ]; then
+    root1=$(echo "scale=2; (-$b + sqrt($discriminant)) / (2 * $a)" | bc)
+    root2=$(echo "scale=2; (-$b - sqrt($discriminant)) / (2 * $a)" | bc)
+    echo "Roots are real and different: $root1 and $root2"
+elif [ $discriminant -eq 0 ]; then
+    root=$(echo "scale=2; -$b / (2 * $a)" | bc)
+    echo "Roots are real and equal: $root"
+else
+    realPart=$(echo "scale=2; -$b / (2 * $a)" | bc)
+    imaginaryPart=$(echo "scale=2; sqrt(-$discriminant) / (2 * $a)" | bc)
+    echo "Roots are complex: $realPart + i$imaginaryPart and $realPart - i$imaginaryPart"
+fi
+--
+task->3
+echo -n "Enter the length of the rectangle: "
+read length
+
+echo -n "Enter the width of the rectangle: "
+read width
+
+# Calculate area and perimeter
+area=$(echo "$length * $width" | bc)
+perimeter=$(echo "2 * ($length + $width)" | bc)
+
+echo "Area of the rectangle: $area"
+echo "Perimeter of the rectangle: $perimeter"
+
+--
+task->4
+echo -n "Enter the radius of the circle: "
+read radius
+
+echo -n "Enter the length of the rectangle: "
+read length
+
+echo -n "Enter the width of the rectangle: "
+read width
+
+echo -n "Enter the side length of the triangle: "
+read side
+
+# Calculate perimeters
+circlePerimeter=$(echo "scale=2; 2 * 3.14 * $radius" | bc)
+rectanglePerimeter=$(echo "2 * ($length + $width)" | bc)
+trianglePerimeter=$(echo "3 * $side" | bc)
+
+echo "Perimeter of the circle: $circlePerimeter"
+echo "Perimeter of the rectangle: $rectanglePerimeter"
+echo "Perimeter of the equilateral triangle: $trianglePerimeter"
+--
+task->5
+echo -n "Enter the first string: "
+read string1
+
+echo -n "Enter the second string: "
+read string2
+
+# Concatenate the strings
+result="$string1$string2"
+
+echo "Concatenated string: $result"
+--
+report->1
+echo -n "Enter numbers separated by spaces: "
+read -a numbers
+
+sumEven=0
+sumOdd=0
+
+for number in "${numbers[@]}"; do
+    if [ $((number % 2)) -eq 0 ]; then
+        sumEven=$((sumEven + number))
+    else
+        sumOdd=$((sumOdd + number))
+    fi
+done
+
+echo "Sum of even numbers: $sumEven"
+echo "Sum of odd numbers: $sumOdd"
+--
+report->2
+#!/bin/bash
+
+echo -n "Enter the lengths of three sides of the triangle separated by spaces: "
+read -a sides
+
+# Check if the input contains exactly three values
+if [ ${#sides[@]} -eq 3 ]; then
+    # Sort the sides in ascending order
+    sortedSides=($(echo "${sides[@]}" | tr ' ' '\n' | sort -n))
+
+    # Check the triangle inequality theorem
+    if [ $((sortedSides[0] + sortedSides[1])) -gt ${sortedSides[2]} ]; then
+        echo "The triangle is valid."
+    else
+        echo "The triangle is not valid."
+    fi
+else
+    echo "Error: Please enter exactly three values for the sides of the triangle."
+fi
+--
+

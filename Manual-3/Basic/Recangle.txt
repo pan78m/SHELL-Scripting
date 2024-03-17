@@ -1,0 +1,11 @@
+# Write a Shell program to Find out the Area and Perimeter of Rectangle.
+
+echo -n "Enter width: "
+read width
+echo -n "Enter breath: "
+read height
+
+Area=$(echo "$width*$height"|bc)
+Perimeter=$(echo "2*($width+$height)"|bc)
+echo "Area:$Area"
+echo "Perimeter:$Perimeter"

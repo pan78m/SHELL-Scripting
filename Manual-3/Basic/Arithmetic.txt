@@ -1,0 +1,18 @@
+#!/bin/bash
+echo -n "Enter the lengths of three sides of the triangle separated by spaces: "
+read -a sides
+
+# Check if the input contains exactly three values
+if [ ${#sides[@]} -eq 3 ]; then
+    # Sort the sides in ascending order
+    sortedSides=($(echo "${sides[@]}" | tr ' ' '\n' | sort -n))
+
+    # Check the triangle inequality theorem
+    if [ $((sortedSides[0] + sortedSides[1])) -gt ${sortedSides[2]} ]; then
+        echo "The triangle is valid."
+    else
+        echo "The triangle is not valid."
+    fi
+else
+    echo "Error: Please enter exactly three values for the sides of the triangle."
+fi

@@ -1,0 +1,6 @@
+echo -n "Enter the Radius of the Circle: "
+read r
+area=$(echo "scale=2; 3.1416*$r*$r" |bc)
+circus=$(echo "scale=2; 2*3.1416*$r" |bc)
+echo "Area is: $area"
+echo "CirCum is: $circus"

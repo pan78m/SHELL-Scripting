@@ -1,0 +1,17 @@
+echo -n "Enter first number: "
+read num1
+echo -n "Enter Second Number: "
+read num2
+sum=$((num1+num2))
+echo "Sum is:$sum\n"
+read number
+
+if [ $number -gt 10 ]; then
+    echo "The number is greater than 10."
+else
+    echo "The number is not greater than 10."
+fi
+read a
+read b 
+sum=$((a+b))
+echo "Sum is=$sum" 

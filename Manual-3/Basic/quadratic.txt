@@ -1,0 +1,11 @@
+#b^2-4ac
+echo -n "Enter value of b: "
+read b
+echo -n "Enter value of a: "
+read a
+echo -n "Enter value of c: "
+read c
+# result=$(echo "scale=2; $b*$b-4*$a*$c " | bc)
+result=$(echo "scale=2; $b^2-4*$a*$c " | bc)
+echo "Result is: $result"
+                          
