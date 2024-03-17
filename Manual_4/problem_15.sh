@@ -1,10 +1,9 @@
 #!/bin/bash
-
+#15. Write a Shell program to find the sum of odd and even numbers.
 read -p "Enter numbers (separated by spaces): " numbers
 
 sum_odd=0
 sum_even=0
-
 IFS=' ' read -ra num_array <<< "$numbers"
 
 for num in "${num_array[@]}"; do

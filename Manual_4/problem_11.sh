@@ -1,4 +1,5 @@
 #!/bin/bash
+#11. Write a Shell program to find the sum of odd digits and even digits from a number.
 read -p "Enter a Numebr: " n
 odd=0
 even=0

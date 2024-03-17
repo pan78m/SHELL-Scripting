@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#14. Write a Shell program to find the sum of the numbers passed as parameters.
 sum_numbers() {
     sum=0
     for num in "$@"; do

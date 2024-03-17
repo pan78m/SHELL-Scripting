@@ -1,5 +1,5 @@
 #! /bin/bash
-# 7. Find the Largest digit from the Number.
+12. Write a Shell program to find the largest digit of a number
 #!/bin/bash
 
 read -p "Enter the number of terms: " n
